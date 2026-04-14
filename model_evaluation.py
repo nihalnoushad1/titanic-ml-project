@@ -3,19 +3,19 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 import joblib
 
-# Load feature engineered data
+
 df = pd.read_csv('titanic_features.csv')
 
-# Prepare data
+
 X = df.drop('Survived', axis=1)
 y = df['Survived']
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Load model
+
 model = joblib.load('titanic_model.pkl')
 
-# Evaluate
+
 y_pred = model.predict(X_test)
 print(f"Test Accuracy: {accuracy_score(y_test, y_pred)}")
 print("Confusion Matrix:")
